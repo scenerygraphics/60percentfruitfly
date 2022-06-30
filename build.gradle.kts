@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    api("graphics.scenery:scenery:78d1439d")
+    api("graphics.scenery:scenery:81c8d22a")
     api("sc.fiji:bigdataviewer-core:10.4.0")
     api(files("./libs/sis-base-18.09.0.jar"))
     api(files("./libs/sis-jhdf5-1654327451.jar"))
