@@ -15,8 +15,13 @@ repositories {
 }
 
 dependencies {
-    api("graphics.scenery:scenery:d0c45e71")
-    api("ch.systemsx.cisd:hdf5:19.04.0")
+    api("graphics.scenery:scenery:78d1439d")
+    api("sc.fiji:bigdataviewer-core:10.4.0")
+    api(files("./libs/sis-base-18.09.0.jar"))
+    api(files("./libs/sis-jhdf5-1654327451.jar"))
+    api("org.slf4j:slf4j-simple:1.7.36")
+    api("org.zeromq:jeromq:0.5.2")
+    api("org.msgpack:jackson-dataformat-msgpack:0.9.2")
     testImplementation(kotlin("test"))
 }
 
