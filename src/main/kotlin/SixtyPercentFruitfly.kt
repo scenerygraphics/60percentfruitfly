@@ -106,6 +106,11 @@ class SixtyPercentFruitfly : SceneryBase("60percentfruitfly", 1280, 720, wantREP
                     drosophila.goToTimepoint(drosophila.currentTimepoint+5)
                     board.text = "t=${drosophila.currentTimepoint} vs ${drosophila.timepointCount}"
                     logger.info("t=${drosophila.currentTimepoint} vs ${drosophila.timepointCount}")
+
+                    if(drosophila.currentTimepoint > 50) {
+                        description.text = " warum ist das fuer forscher interessant? "
+                        subtitle.text = " fruchtfliegen haben 60% genetischen ueberlapp mit menschen "
+                    }
                 }),
 
             Part(parallel = false, minimumWait = 20,
@@ -114,6 +119,8 @@ class SixtyPercentFruitfly : SceneryBase("60percentfruitfly", 1280, 720, wantREP
                     logger.info("playing back")
                     drosophila.goToTimepoint(drosophila.currentTimepoint-5)
                     board.text = "t=${drosophila.currentTimepoint}"
+                    description.text = " ... und nochmal von vorn "
+                    subtitle.text = " im schnelldurchlauf "
                     Thread.sleep(20)
                 }),
 
@@ -122,7 +129,39 @@ class SixtyPercentFruitfly : SceneryBase("60percentfruitfly", 1280, 720, wantREP
             action = {
                 drosophila.nextTimepoint()
                 board.text = "t=${drosophila.currentTimepoint}"
-                Thread.sleep(100)
+
+                when (drosophila.currentTimepoint) {
+                    1 -> {
+                        description.text = " am anfang gibt es nur zellkerne auf der aussenseite "
+                        subtitle.text = " dann entwickeln sich zellwaende "
+                    }
+
+                    10 -> {
+                        description.text = " die gastrulation beginnt "
+                        subtitle.text = " einer der wichtigsten entwicklungsschritte (fast) aller lebewesen "
+                    }
+
+                    70 -> {
+                        description.text = " gehirn-entwicklung startet "
+                        subtitle.text = " bei der fruchtfliege passiert das zuerst aussen "
+                    }
+
+                    100 -> {
+                        description.text = " die segmentierung startet "
+                        subtitle.text = " aus den einzelnen segmenten entstehen spaeter z.b. die fluegel "
+                    }
+
+                    170 -> {
+                        description.text = " was wird denn da gefressen? "
+                        subtitle.text = " nein, es wird nichts gefressen -- aber das gehirn wandern nach innen "
+                    }
+
+                    210 -> {
+                        description.text = " muskelbewegungen beginnen "
+                        subtitle.text = " training fuer das larvenstadium "
+                    }
+                }
+                Thread.sleep(500)
             })
         )
 
