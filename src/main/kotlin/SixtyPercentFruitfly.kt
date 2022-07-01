@@ -54,14 +54,15 @@ class SixtyPercentFruitfly : SceneryBase("60percentfruitfly", 1280, 720, wantREP
             .createLightTetrahedron<PointLight>(spread = 5.0f, intensity = 10.0f)
             .forEach { light -> scene.addChild(light) }
 
-        val vvo = VolumeViewerOptions().maxAllowedStepInVoxels(0.1)
+        val vvo = VolumeViewerOptions()
         val drosophila = Volume.fromXML("./droso-royer-autopilot-transposed-bdv/export-norange.xml", hub, vvo)
         drosophila.apply {
             spatial().rotation = spatial().rotation.rotateX(PI.toFloat()/2.0f)
-            spatial().scale = Vector3f(1.0f, 5.0f, 1.0f)
+            spatial().scale = Vector3f(5.0f, 15.0f, 5.0f)
 
             transferFunction = TransferFunction.ramp(0.1f, 0.5f)
             converterSetups.firstOrNull()?.setDisplayRange(10.0, 1000.0)
+            multiResolutionLevelLimits = 1 to 2
         }
         scene.addChild(drosophila)
 
